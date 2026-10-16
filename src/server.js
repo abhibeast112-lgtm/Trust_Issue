@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import session from "express-session";
 import authRoutes from "./routes/auth.js";
+import registrationRoutes from "./routes/registrations.js";
 if (!process.env.SESSION_SECRET) {
   throw new Error("SESSION_SECRET is missing. Set it in your .env file.");
 }
@@ -40,6 +41,8 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+
+app.use("/api/registrations", registrationRoutes);
 
 app.listen(PORT, "127.0.0.1", () => {
     console.log(`Server running at http://127.0.0.1:${PORT}`);
