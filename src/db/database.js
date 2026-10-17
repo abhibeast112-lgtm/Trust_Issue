@@ -7,7 +7,7 @@ const currentDir = path.dirname(currentFile);
 
 // Store the database in the project root.
 const projectRoot = path.resolve(currentDir, "../..");
-const dbPath = path.join(projectRoot, "trust-issues.db");
+const dbPath = process.env.TRUST_ISSUES_DB_PATH || path.join(projectRoot, "trust-issues.db");
 
 const db = new Database(dbPath);
 
