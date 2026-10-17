@@ -1,7 +1,9 @@
 import express from "express";
+import eventRoutes from "./routes/events.js";
 import "dotenv/config";
 import session from "express-session";
 import authRoutes from "./routes/auth.js";
+import searchRoutes from "./routes/search.js";
 import registrationRoutes from "./routes/registrations.js";
 if (!process.env.SESSION_SECRET) {
   throw new Error("SESSION_SECRET is missing. Set it in your .env file.");
@@ -41,6 +43,10 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+
+app.use("/api/events", eventRoutes);
+
+app.use("/api/search", searchRoutes);
 
 app.use("/api/registrations", registrationRoutes);
 
